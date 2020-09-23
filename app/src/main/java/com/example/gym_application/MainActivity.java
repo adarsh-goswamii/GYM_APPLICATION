@@ -11,7 +11,7 @@ import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button about, allActivity, plan;
+    private Button about, allActivity, plan, musicPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
         about= findViewById(R.id.aboutBtn);
         plan= findViewById(R.id.plansBtn);
         allActivity= findViewById(R.id.activitiesBtn);
+        musicPlayer= findViewById(R.id.musicPlayerBtn);
+
+        musicPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, MusicPlayer.class);
+                startActivity(intent);
+            }
+        });
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override
