@@ -4,12 +4,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 public class MusicFiles
 {
-    private static String path, title, artist, duration, album;
+    private String path, title, artist, duration, album;
 
     public MusicFiles(String path, String title, String artist, String duration, String album) {
         this.path = path;
@@ -62,33 +63,5 @@ public class MusicFiles
         this.album = album;
     }
 
-    public static ArrayList<MusicFiles> getAllAudio(Context context)
-    {
-        ArrayList<MusicFiles> tempAudioList= new ArrayList<>();
 
-        Uri uri= MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String[] projection= { MediaStore.Audio.Media.ALBUM,
-                               MediaStore.Audio.Media.ARTIST,
-                               MediaStore.Audio.Media.DURATION,
-                               MediaStore.Audio.Media.DATA,
-        };
-
-        Cursor cursor= context.getContentResolver().query(uri, projection, null, null, null);
-        if(cursor!= null)
-        {
-            while(cursor.moveToNext())
-            {
-                String album= cursor.getString(0);
-                String title= cursor.getString(1);
-                String duration= cursor.getString(2);
-                String path= cursor.getString(3);
-                String artist= cursor.getString(4);
-            }
-
-            MusicFiles musicFiles= new MusicFiles(path, title, artist, duration, album);
-            tempAudioList.add(musicFiles);
-            cursor.close();
-        }
-        return tempAudioList;
-    }
 }
