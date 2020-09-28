@@ -3,7 +3,7 @@
     package="com.example.gym_application">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MusicPlayer"></activity>
+        <activity android:name=".player"></activity>
+        <activity android:name=".MusicPlayer" />
         <activity android:name=".AllTrainings" />
         <activity android:name=".MainActivity">
             <intent-filter>
