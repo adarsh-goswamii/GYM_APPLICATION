@@ -1,6 +1,7 @@
 package com.example.gym_application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -44,6 +45,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>
         {
             Glide.with(mcontext).asBitmap().load(image).into(holder.image);
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(mcontext, player.class);
+                mcontext.startActivity(intent);
+            }
+        });
     }
 
     @Override
