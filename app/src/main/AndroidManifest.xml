@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".player"></activity>
+        <activity android:name=".PlanActivity"></activity>
+        <activity android:name=".TrainingActivity" />
+        <activity android:name=".player" />
         <activity android:name=".MusicPlayer" />
         <activity android:name=".AllTrainings" />
         <activity android:name=".MainActivity">

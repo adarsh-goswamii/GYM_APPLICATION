@@ -1,6 +1,7 @@
 package com.example.gym_application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
+
+import static com.example.gym_application.TrainingActivity.TRAINING_KEY;
 
 public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHolder>
 {
@@ -33,7 +36,7 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(list.get(position).getName());
         holder.shortDesc.setText(list.get(position).getShortDesc());
 
@@ -42,7 +45,9 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHo
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: intent.
+                Intent intent= new Intent(context, TrainingActivity.class);
+                intent.putExtra(TRAINING_KEY, list.get(position));
+                context.startActivity(intent);
             }
         });
     }

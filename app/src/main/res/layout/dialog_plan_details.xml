@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Details"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lemon"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/enter_details"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Training name"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/audiowide"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/enter_details"
+        android:id="@+id/trainingname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter how much time "
+        android:layout_below="@+id/trainingname"
+        android:fontFamily="@font/audiowide"
+        android:layout_marginTop="10dp"
+        android:id="@+id/how_much_time"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Minutes"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/how_much_time"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/editText"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the day"
+        android:layout_marginTop="10dp"
+        android:id="@+id/select_the_day"
+        android:layout_below="@+id/editText"
+        android:fontFamily="@font/audiowide"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/days"
+        android:layout_marginTop="10dp"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/select_the_day"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dismiss"
+        android:id="@+id/dismissBtn"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="10dp"
+        android:id="@+id/addBtn"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -4,6 +4,15 @@ import java.util.ArrayList;
 public class Utils
 {
     public static ArrayList<Training> trainings;
+    public static ArrayList<Plan> plans;
+
+    public static boolean addPlan(Plan plan)
+    {
+        if(plans== null)
+            plans= new ArrayList<>();
+
+        return plans.add(plan);
+    }
 
     public static void initTrainings()
     {
