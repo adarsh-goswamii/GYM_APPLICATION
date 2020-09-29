@@ -38,7 +38,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(mfiles.get(position).getTitle());
         byte[] image=getAlbumArt(mfiles.get(position).getPath());
         if(image!=null)
@@ -50,6 +50,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(mcontext, player.class);
+                intent.putExtra("position", position);
                 mcontext.startActivity(intent);
             }
         });
