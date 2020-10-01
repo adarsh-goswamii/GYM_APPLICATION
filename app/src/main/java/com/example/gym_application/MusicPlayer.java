@@ -11,14 +11,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -26,6 +31,8 @@ import java.util.ArrayList;
 public class MusicPlayer extends AppCompatActivity {
 
     public static final int REQUEST_CODE= 100;
+    public static final int SETTING_CODE= 108;
+    private LinearLayout parent;
     public static  ArrayList<MusicFiles> musicFiles;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -34,36 +41,60 @@ public class MusicPlayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
-
-        permissions();
+        parent= findViewById(R.id.parent);
+        handlePermissions();
     }
 
-    void permissions()
+    public void handlePermissions()
     {
-        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(MusicPlayer.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
-        }
-        else {
             musicFiles= getAllAudio(this);
             initViewPager();
         }
+        else
+        {
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                showSnackBar();
+            else
+            {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+            }
+        }
     }
+
+
+    public void showSnackBar()
+    {
+        Snackbar.make(parent, "Storage permissions are required to fetch the songs from your device", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Grant Permission", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent= new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        intent.setData(Uri.parse("package:"+getPackageName()));
+                        startActivity(intent);
+                    }
+                }).show();
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode== REQUEST_CODE)
+
+        switch (requestCode)
         {
-            if(grantResults[0]!= PackageManager.PERMISSION_GRANTED)
-            {
-                ActivityCompat.requestPermissions(MusicPlayer.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
-            }
-            else
-            {
-                musicFiles= getAllAudio(this);
-                initViewPager();
-            }
+            case REQUEST_CODE:
+                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                {
+                    musicFiles= getAllAudio(this);
+                    initViewPager();
+                }
+                else
+                    Toast.makeText(this, "PERMISSION DENIED", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
         }
     }
 

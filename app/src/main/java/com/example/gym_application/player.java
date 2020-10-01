@@ -40,33 +40,6 @@ public class player extends AppCompatActivity
             public void onProgressChanged(final SeekBar seekBar, int i, boolean b) {
                 if(mediaPlayer!=null && b)
                     mediaPlayer.seekTo(i * 1000);
-
-                player.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(mediaPlayer!= null)
-                        {
-                            int  currentPosition= mediaPlayer.getCurrentPosition()/1000;
-                            seekBar.setProgress(currentPosition);
-                            duration_played.setText(formattedTime(currentPosition));
-                        }
-                        handler.postDelayed(this , 1000);
-                    }
-                });
-            }
-
-            private String formattedTime(int s)
-            {
-                String totalOut="";
-                String second= String.valueOf(s% 60);
-                String minute= String.valueOf(s/60);
-                String totalNew="";
-
-                totalOut= minute+":"+second;
-                if(second.length()==1)
-                    return totalNew;
-                else
-                    return totalOut;
             }
 
             @Override
@@ -79,8 +52,34 @@ public class player extends AppCompatActivity
 
             }
         });
+
+        player.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(mediaPlayer!= null)
+                {
+                    int  currentPosition= mediaPlayer.getCurrentPosition()/1000;
+                    seekBar.setProgress(currentPosition);
+                    duration_played.setText(formattedTime(currentPosition));
+                }
+                handler.postDelayed(this , 1000);
+            }
+        });
     }
 
+    private String formattedTime(int s)
+    {
+        String totalOut="";
+        String second= String.valueOf(s% 60);
+        String minute= String.valueOf(s/60);
+        String totalNew="";
+
+        totalOut= minute+":"+second;
+        if(second.length()==1)
+            return totalNew;
+        else
+            return totalOut;
+    }
     public void initViews()
     {
         artist_name= findViewById(R.id.artist_name);
