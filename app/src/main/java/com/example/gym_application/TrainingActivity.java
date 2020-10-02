@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -23,7 +25,7 @@ public class TrainingActivity extends AppCompatActivity implements PlanDetailsDi
         }
     }
 
-    private TextView longDesc;
+    private TextView longDesc, header;
     private ImageView imageView;
     private Button add;
     static String TRAINING_KEY= "109";
@@ -39,7 +41,8 @@ public class TrainingActivity extends AppCompatActivity implements PlanDetailsDi
             final Training training= intent.getParcelableExtra(TRAINING_KEY);
             if(training!= null)
             {
-                longDesc.setText(training.getLongDesc());
+                longDesc.setText(training.getShortDesc());
+                header.setText(training.getName());
                 Glide.with(this).asBitmap().load(training.getImageUrl()).into(imageView);
 
                 add.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +57,16 @@ public class TrainingActivity extends AppCompatActivity implements PlanDetailsDi
                     }
                 });
             }
+            else
+                Toast.makeText(this, "trainig null", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void initViews()
     {
         longDesc= findViewById(R.id.long_description);
-        imageView= findViewById(R.id.image_training);
-        add= findViewById(R.id.add_to_plan_btn);
+        imageView= findViewById(R.id.image);
+        add= findViewById(R.id.addToPlanBtn);
+        header= findViewById(R.id.heading);
     }
 }

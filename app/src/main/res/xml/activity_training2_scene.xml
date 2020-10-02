@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Transition
+        app:constraintSetEnd="@layout/activity_training2_motion_end"
+        app:constraintSetStart="@layout/activity_training2_motion_start">
+
+        <OnSwipe app:touchAnchorSide="top"
+            app:dragDirection="dragUp"/>
+
+    </Transition>
+</MotionScene>
