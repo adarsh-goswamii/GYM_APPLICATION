@@ -25,7 +25,9 @@ public class Utils
         Training squat= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "", "https://i.pinimg.com/474x/2f/a9/8c/2fa98cdde9eb455def3ff6dfa0f14f5f.jpg", "Squats", 4);
         Training flys= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "", "https://i.pinimg.com/474x/39/59/ef/3959ef21c5bb47f216a9b07857051e7a.jpg", "Cable flys", 5);
         Training curls= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "", "https://i.pinimg.com/474x/37/ea/dc/37eadc5139c1ed98fd3a48b33c81b6a5.jpg", "barbell curls", 6);
-        Training crunches= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "", "https://i.pinimg.com/474x/19/c8/99/19c8997a20077d24ef0e7fc446d677b5.jpg", "Crunches", 7);
+        Training crunches= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "Your core consists not only of your abs. It also includes your oblique muscles on the sides of your trunk, as well as the muscles in your pelvis, lower back, and hips. Together, these muscles help stabilize your body.\n" +
+                "\n" +
+                "While the crunch is a popular core move, it isn’t safe for everyone. It can place a lot of stress on your back and neck, and it only works your abs, not the other muscles in your core", "https://i.pinimg.com/474x/19/c8/99/19c8997a20077d24ef0e7fc446d677b5.jpg", "Crunches", 7);
         Training calf= new Training("A compound bodyweight workout which is very effective for targeting back and biceps, a pull workout", "", "https://i.pinimg.com/474x/d9/2c/6e/d92c6e31bcc19af5dcc75891a6ea5d4d.jpg", "Donkey calf raise", 8);
 
         trainings.add(benchPress);

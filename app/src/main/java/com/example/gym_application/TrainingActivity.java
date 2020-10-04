@@ -41,7 +41,7 @@ public class TrainingActivity extends AppCompatActivity implements PlanDetailsDi
             final Training training= intent.getParcelableExtra(TRAINING_KEY);
             if(training!= null)
             {
-                longDesc.setText(training.getShortDesc());
+                longDesc.setText(training.getLongDesc());
                 header.setText(training.getName());
                 Glide.with(this).asBitmap().load(training.getImageUrl()).into(imageView);
 
@@ -57,8 +57,7 @@ public class TrainingActivity extends AppCompatActivity implements PlanDetailsDi
                     }
                 });
             }
-            else
-                Toast.makeText(this, "trainig null", Toast.LENGTH_SHORT).show();
+
         }
     }
 
