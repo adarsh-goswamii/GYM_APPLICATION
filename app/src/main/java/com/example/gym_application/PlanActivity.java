@@ -5,9 +5,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static com.example.gym_application.Utils.getPlans;
 
 public class PlanActivity extends AppCompatActivity {
 
@@ -15,6 +20,9 @@ public class PlanActivity extends AppCompatActivity {
     private RecyclerView mondayRecycler, tuesdayRecycler, wednesdayRecycler, thursdayRecycler, fridayRecycler, saturdayRecycler, sundayRecycler ;
     private ImageView downMonday, upMonday, downTuesday, upTuesday, downWednesday, upWednesday, downThursday, upThursday, downFriday, upFriday, downSaturday, upSaturday;
     private ImageView downSunday, upSunday;
+    private ArrayList<Plan> plans;
+    private RelativeLayout noplans, parent;
+    private Button btnAddPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +30,32 @@ public class PlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plan);
 
         initView();
-
         onClickListeners();
+
+        plans= getPlans();
+        if(plans!=null)
+        {
+            if(plans.size()==0)
+            {
+                noplans.setVisibility(View.VISIBLE);
+                parent.setVisibility(View.GONE);
+            }
+            else
+            {
+
+            }
+        }
 
     }
 
     private void onClickListeners()
     {
+        btnAddPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: intent fire.
+            }
+        });
         downMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,6 +185,10 @@ public class PlanActivity extends AppCompatActivity {
 
     private void initView()
     {
+        noplans= findViewById(R.id.ifNoPlans);
+        parent= findViewById(R.id.parent);
+        btnAddPlan= findViewById(R.id.addPlanBtn);
+
         mondayRecycler= findViewById(R.id.mondayRecyler);
         mondayRelative= findViewById(R.id.mondayRelLayout);
         upMonday= findViewById(R.id.upArrow);

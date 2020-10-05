@@ -43,4 +43,8 @@ public class Utils
     public static ArrayList<Training> getTrainings() {
         return trainings;
     }
+
+    public static ArrayList<Plan> getPlans() {
+        return plans;
+    }
 }
