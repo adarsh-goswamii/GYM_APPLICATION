@@ -23,6 +23,12 @@ public class PlanActivity extends AppCompatActivity {
 
         initView();
 
+        onClickListeners();
+
+    }
+
+    private void onClickListeners()
+    {
         downMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +154,6 @@ public class PlanActivity extends AppCompatActivity {
                 sundayRecycler.setVisibility(View.VISIBLE);
             }
         });
-
     }
 
     private void initView()
@@ -160,32 +165,32 @@ public class PlanActivity extends AppCompatActivity {
 
         tuesdayRecycler= findViewById(R.id.mondayRecyler);
         tuesdayRelative= findViewById(R.id.mondayRelLayout);
-        upTuesday= findViewById(R.id.upArrow);
-        downTuesday= findViewById(R.id.downArrow);
+        upTuesday= findViewById(R.id.tuesday_up);
+        downTuesday= findViewById(R.id.tuesday_down);
 
         wednesdayRecycler= findViewById(R.id.mondayRecyler);
         wednesdayRelative= findViewById(R.id.mondayRelLayout);
-        upWednesday= findViewById(R.id.upArrow);
-        downWednesday= findViewById(R.id.downArrow);
+        upWednesday= findViewById(R.id.wednesday_up);
+        downWednesday= findViewById(R.id.wednesday_down);
 
         thursdayRecycler= findViewById(R.id.mondayRecyler);
         thursdayRelative= findViewById(R.id.mondayRelLayout);
-        upThursday= findViewById(R.id.upArrow);
-        downThursday= findViewById(R.id.downArrow);
+        upThursday= findViewById(R.id.thursday_up);
+        downThursday= findViewById(R.id.thursday_down);
 
         fridayRecycler= findViewById(R.id.mondayRecyler);
         fridayRelative= findViewById(R.id.mondayRelLayout);
-        upFriday= findViewById(R.id.upArrow);
-        downFriday= findViewById(R.id.downArrow);
+        upFriday= findViewById(R.id.friday_up);
+        downFriday= findViewById(R.id.friday_down);
 
         saturdayRecycler= findViewById(R.id.mondayRecyler);
         saturdayRelative= findViewById(R.id.mondayRelLayout);
-        upSaturday= findViewById(R.id.upArrow);
-        downSaturday= findViewById(R.id.downArrow);
+        upSaturday= findViewById(R.id.saturdayup);
+        downSaturday= findViewById(R.id.saturdaydown);
 
         sundayRecycler= findViewById(R.id.mondayRecyler);
         sundayRelative= findViewById(R.id.mondayRelLayout);
-        upSunday= findViewById(R.id.upArrow);
-        downSunday= findViewById(R.id.downArrow);
+        upSunday= findViewById(R.id.sunday_up);
+        downSunday= findViewById(R.id.sunday_down);
     }
 }
