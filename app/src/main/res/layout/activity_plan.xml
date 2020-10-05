@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#A3A0A0"
     android:layout_height="match_parent"
     tools:context=".PlanActivity">
 
@@ -88,6 +89,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mondayRecyler"
                 android:id="@+id/tuesdayRelLayout"
@@ -130,6 +132,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
                 android:layout_below="@+id/tuesdayRecyler"
                 android:id="@+id/wednesdayRelLayout"
                 >
@@ -170,7 +174,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content"                android:layout_marginTop="10dp"
+
                 android:layout_below="@+id/wednesdayRecyler"
                 android:id="@+id/thursdayRelLayout"
                 >
@@ -212,6 +217,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
                 android:layout_below="@+id/thursdayRecyler"
                 android:id="@+id/fridayRelLayout"
                 >
@@ -254,6 +261,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fridayRecyler"
+                android:layout_marginTop="10dp"
+
                 android:id="@+id/saturdayRelLayout"
                 >
 
@@ -294,6 +303,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
                 android:layout_below="@+id/saturdayRecyler"
                 android:id="@+id/sundayRelLayout"
                 >
