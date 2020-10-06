@@ -1,8 +1,10 @@
 package com.example.gym_application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,7 @@ public class PlanActivity extends AppCompatActivity {
     private ArrayList<Plan> plans;
     private RelativeLayout noplans, parent;
     private Button btnAddPlan;
+    private PlanAdapter mondayAdapter, tuesdayAdapter, wednesdayAdapter, thursdayAdapter, fridayAdapter, saturdayAdapter, sundayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,32 +33,99 @@ public class PlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plan);
 
         initView();
-        onClickListeners();
 
         plans= getPlans();
-        if(plans!=null)
-        {
-            if(plans.size()==0)
-            {
+        if(plans!=null) {
+            if (plans.size() == 0) {
                 noplans.setVisibility(View.VISIBLE);
                 parent.setVisibility(View.GONE);
+                btnAddPlan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(PlanActivity.this, AllTrainings.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                });
             }
             else
             {
+                parent.setVisibility(View.VISIBLE);
+                noplans.setVisibility(View.GONE);
 
+                initAdapter();
+                onClickListeners();
             }
+        }
+        else
+        {
+            noplans.setVisibility(View.VISIBLE);
+            parent.setVisibility(View.GONE);
+            btnAddPlan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent= new Intent(PlanActivity.this, AllTrainings.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            });
         }
 
     }
 
+    private void initAdapter()
+    {
+        mondayAdapter= new PlanAdapter(this);
+        mondayRecycler.setAdapter(mondayAdapter);
+        mondayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        mondayAdapter.setPlans(getPlansByDay("Monday"));
+
+        tuesdayAdapter= new PlanAdapter(this);
+        tuesdayRecycler.setAdapter(tuesdayAdapter);
+        tuesdayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        tuesdayAdapter.setPlans(getPlansByDay("Tuesday"));
+
+        wednesdayAdapter= new PlanAdapter(this);
+        wednesdayRecycler.setAdapter(wednesdayAdapter);
+        wednesdayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        wednesdayAdapter.setPlans(getPlansByDay("Wednesday"));
+
+        thursdayAdapter= new PlanAdapter(this);
+        thursdayRecycler.setAdapter(thursdayAdapter);
+        thursdayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        thursdayAdapter.setPlans(getPlansByDay("Thursday"));
+
+        fridayAdapter= new PlanAdapter(this);
+        fridayRecycler.setAdapter(fridayAdapter);
+        fridayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        fridayAdapter.setPlans(getPlansByDay("Friday"));
+
+        saturdayAdapter= new PlanAdapter(this);
+        saturdayRecycler.setAdapter(saturdayAdapter);
+        saturdayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        saturdayAdapter.setPlans(getPlansByDay("Saturday"));
+
+        sundayAdapter= new PlanAdapter(this);
+        sundayRecycler.setAdapter(sundayAdapter);
+        sundayRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        sundayAdapter.setPlans(getPlansByDay("Sunday"));
+    }
+
+    private ArrayList<Plan> getPlansByDay(String day)
+    {
+        ArrayList<Plan> plans= Utils.getPlans();
+        ArrayList<Plan> ret= new ArrayList<>();
+
+        for(Plan i: plans)
+        {
+            if(i.getDay().equalsIgnoreCase(day))
+                ret.add(i);
+        }
+        return ret;
+    }
+
     private void onClickListeners()
     {
-        btnAddPlan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO: intent fire.
-            }
-        });
         downMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,33 +264,33 @@ public class PlanActivity extends AppCompatActivity {
         upMonday= findViewById(R.id.upArrow);
         downMonday= findViewById(R.id.downArrow);
 
-        tuesdayRecycler= findViewById(R.id.mondayRecyler);
-        tuesdayRelative= findViewById(R.id.mondayRelLayout);
+        tuesdayRecycler= findViewById(R.id.tuesdayRecyler);
+        tuesdayRelative= findViewById(R.id.tuesdayRelLayout);
         upTuesday= findViewById(R.id.tuesday_up);
         downTuesday= findViewById(R.id.tuesday_down);
 
-        wednesdayRecycler= findViewById(R.id.mondayRecyler);
-        wednesdayRelative= findViewById(R.id.mondayRelLayout);
+        wednesdayRecycler= findViewById(R.id.wednesdayRecyler);
+        wednesdayRelative= findViewById(R.id.wednesdayRelLayout);
         upWednesday= findViewById(R.id.wednesday_up);
         downWednesday= findViewById(R.id.wednesday_down);
 
-        thursdayRecycler= findViewById(R.id.mondayRecyler);
-        thursdayRelative= findViewById(R.id.mondayRelLayout);
+        thursdayRecycler= findViewById(R.id.thursdayRecyler);
+        thursdayRelative= findViewById(R.id.thursdayRelLayout);
         upThursday= findViewById(R.id.thursday_up);
         downThursday= findViewById(R.id.thursday_down);
 
-        fridayRecycler= findViewById(R.id.mondayRecyler);
-        fridayRelative= findViewById(R.id.mondayRelLayout);
+        fridayRecycler= findViewById(R.id.fridayRecyler);
+        fridayRelative= findViewById(R.id.fridayRelLayout);
         upFriday= findViewById(R.id.friday_up);
         downFriday= findViewById(R.id.friday_down);
 
-        saturdayRecycler= findViewById(R.id.mondayRecyler);
-        saturdayRelative= findViewById(R.id.mondayRelLayout);
+        saturdayRecycler= findViewById(R.id.saturdayRecyler);
+        saturdayRelative= findViewById(R.id.saturdayRelLayout);
         upSaturday= findViewById(R.id.saturdayup);
         downSaturday= findViewById(R.id.saturdaydown);
 
-        sundayRecycler= findViewById(R.id.mondayRecyler);
-        sundayRelative= findViewById(R.id.mondayRelLayout);
+        sundayRecycler= findViewById(R.id.sundayRecyler);
+        sundayRelative= findViewById(R.id.sundayRelLayout);
         upSunday= findViewById(R.id.sunday_up);
         downSunday= findViewById(R.id.sunday_down);
     }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="7dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:id="@+id/card"
+        >
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/ic_sergi"
+            android:scaleType="fitXY"
+            android:id="@+id/card_image"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@drawable/film"
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@drawable/gradient_bg"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Training Name"
+            android:fontFamily="@font/lemon"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/card_name"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_not_checked"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/not_checked"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_checked"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/checked"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:id="@+id/text_time"
+            android:fontFamily="@font/lemon"
+            android:layout_below="@+id/card_name"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/text_time"
+            android:layout_marginLeft="20dp"
+            android:text="45"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/lemon"
+            android:layout_below="@+id/card_name"
+            android:id="@+id/set_time"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:fontFamily="@font/lemon"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/text_time"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/text_description"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_description"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:fontFamily="@font/audiowide"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/set_description"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

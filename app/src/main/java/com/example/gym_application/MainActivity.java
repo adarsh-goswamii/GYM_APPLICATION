@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         plan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                Intent intent= new Intent(MainActivity.this, PlanActivity.class);
+                startActivity(intent);
             }
         });
 
