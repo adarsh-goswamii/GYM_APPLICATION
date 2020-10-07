@@ -1,6 +1,7 @@
 package com.example.gym_application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,8 @@ public class PlanActivity extends AppCompatActivity {
     private ImageView downMonday, upMonday, downTuesday, upTuesday, downWednesday, upWednesday, downThursday, upThursday, downFriday, upFriday, downSaturday, upSaturday;
     private ImageView downSunday, upSunday;
     private ArrayList<Plan> plans;
-    private RelativeLayout noplans, parent;
+    private RelativeLayout noplans;
+    private NestedScrollView parent;
     private Button btnAddPlan;
     private PlanAdapter mondayAdapter, tuesdayAdapter, wednesdayAdapter, thursdayAdapter, fridayAdapter, saturdayAdapter, sundayAdapter;
 
@@ -35,13 +38,16 @@ public class PlanActivity extends AppCompatActivity {
         initView();
 
         plans= getPlans();
-        if(plans!=null) {
-            if (plans.size() == 0) {
+        if(plans!=null)
+        {
+            if (plans.size() == 0)
+            {
                 noplans.setVisibility(View.VISIBLE);
                 parent.setVisibility(View.GONE);
                 btnAddPlan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        //Toast.makeText(PlanActivity.this, "hello there", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(PlanActivity.this, AllTrainings.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -64,6 +70,7 @@ public class PlanActivity extends AppCompatActivity {
             btnAddPlan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //Toast.makeText(PlanActivity.this, "hello there", Toast.LENGTH_SHORT).show();
                     Intent intent= new Intent(PlanActivity.this, AllTrainings.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -257,7 +264,7 @@ public class PlanActivity extends AppCompatActivity {
     {
         noplans= findViewById(R.id.ifNoPlans);
         parent= findViewById(R.id.parent);
-        btnAddPlan= findViewById(R.id.addPlanBtn);
+        btnAddPlan= findViewById(R.id.navigate);
 
         mondayRecycler= findViewById(R.id.mondayRecyler);
         mondayRelative= findViewById(R.id.mondayRelLayout);
